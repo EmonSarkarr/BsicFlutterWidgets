@@ -4,6 +4,8 @@ import 'package:all_design/pages/home.dart';
 import 'package:all_design/pages/indicator_page.dart';
 import 'package:all_design/pages/list_view_check.dart';
 import 'package:all_design/pages/sliver_app_bar.dart';
+import 'package:all_design/pages/splash_screen.dart';
+
 import 'package:flutter/material.dart';
 
 import 'pages/others_page.dart';
@@ -25,7 +27,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      initialRoute: HomePage.routeName,
+      initialRoute: SplashScreen.routeName,
+
       routes: {
         HomePage.routeName : (context) => HomePage(),
         OthersPage.routeName : (context)=> OthersPage(),
@@ -34,6 +37,8 @@ class MyApp extends StatelessWidget {
         GridViewPage.routeName : (context)=> GridViewPage(),
         SliverAppbar.routeName : (context)=> SliverAppbar(),
         IndicatorPage.routeName : (context)=> IndicatorPage(),
+       SplashScreen.routeName : (context)=> SplashScreen(),
+
 
       },
 
