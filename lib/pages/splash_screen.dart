@@ -16,8 +16,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Timer(Duration(seconds: 2), () {
-      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=>HomePage(),),);
+    Timer(Duration(seconds: 5), () {
+      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=> const HomePage(),),);
 
     });
     super.initState();
@@ -30,8 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          Center(child: Text("LOGO",style: TextStyle(fontSize: 100,fontWeight: FontWeight.bold,color: Colors.red),))
+        children:  [
+         Center(child: Image.asset("lib/emon/nature_logo.png",width: 200, height: 200,fit: BoxFit.cover)),
         ],
       ),
     );

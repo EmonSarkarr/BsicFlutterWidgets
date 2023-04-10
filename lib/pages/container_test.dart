@@ -11,15 +11,17 @@ class ContainerTest extends StatefulWidget {
 }
 
 class _ContainerTestState extends State<ContainerTest> {
+  late Size size;
   @override
   Widget build(BuildContext context) {
+    size  = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(title: Text('Container Test'), centerTitle: true),
       body: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-        height: 200,
-        width: 200,
-        color: Colors.white60,
+        height: size.height/1.5,
+        width: double.infinity,
+
         child: ListView.builder(
           itemCount: students.length,
           itemBuilder: (context, index){
@@ -31,8 +33,3 @@ class _ContainerTestState extends State<ContainerTest> {
   }
 }
 
-
-//ListTile(
-//               tileColor: Colors.black,
-//           title: Text('Iteams:',style: TextStyle(fontSize: 40)),
-//         )

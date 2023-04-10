@@ -5,6 +5,7 @@ import 'package:all_design/pages/list_view_check.dart';
 import 'package:all_design/pages/others_page.dart';
 import 'package:all_design/pages/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = "/";
@@ -26,9 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery
-        .of(context)
-        .size;
+    size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: _switchValue == false ? Colors.white : Colors.black,
       appBar: AppBar(title: const Text('Home page')),
@@ -40,13 +39,13 @@ class _HomePageState extends State<HomePage> {
               "This is text ",
               style: TextStyle(fontSize: 29, color: Colors.blue),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
 
             //Evaluated button
             ElevatedButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, OthersPage.routeName,
-                        arguments: 'Sent Password =50'),
+                onPressed: () => Navigator.pushNamed(
+                    context, OthersPage.routeName,
+                    arguments: 'Sent Password =50'),
                 child: const Text(
                   "Login",
                   style: TextStyle(fontSize: 49),
@@ -60,50 +59,48 @@ class _HomePageState extends State<HomePage> {
                     text: "Rich Text",
                     style: TextStyle(fontSize: 29, color: Colors.blue),
                     children: [
-                      TextSpan(
-                          text: "CLick to open a Facebook",
-                          style:
+                  TextSpan(
+                      text: "CLick to open a Facebook",
+                      style:
                           TextStyle(fontSize: 39, color: Colors.greenAccent)),
-                      TextSpan(
-                          text: 'OK',
-                          style: TextStyle(color: Colors.black, fontSize: 29))
-                    ])),
+                  TextSpan(
+                      text: 'OK',
+                      style: TextStyle(color: Colors.black, fontSize: 29))
+                ])),
 
-            SizedBox(height: 50),
-
-            const Text(
-              "This is text ",
-              style: TextStyle(fontSize: 29),
-            ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
 
             OutlinedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, ContainerTest.routeName);
                 },
-                child: const Text("OutLIne Button",
+                child: const Text("Container Test",
                     style: TextStyle(color: Colors.red, fontSize: 30))),
 
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
 
             FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                try {
+                  Fluttertoast.showToast(
+                      msg: "This is Center Short Toast",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 16.0);
+                } catch (e) {
+                  print(e);
+                  print("PROBLEM");
+                }
+                ;
+              },
               backgroundColor: Colors.red,
-              child: const Text("Flotting",
+              child: const Text("Toast",
                   style: TextStyle(fontSize: 29, color: Colors.white)),
             ),
 
-            const SizedBox(height: 20),
-
-            //Flotting action button
-            FloatingActionButton.extended(
-              onPressed: () =>
-                  Navigator.pushNamed(context, ListViewPage.routeName,),
-              label: const Text("ListVIewPage",
-                  style: TextStyle(color: Colors.green)),
-              icon: const Icon(Icons.account_box_rounded),
-              backgroundColor: Colors.black87,
-            ),
             SizedBox(height: 50),
 
             Row(
@@ -224,12 +221,24 @@ class _HomePageState extends State<HomePage> {
 
             //GridView
             FloatingActionButton.extended(
-              onPressed: () =>
-                  Navigator.pushNamed(
-                    context,
-                    GridViewPage.routeName,
-                  ),
+              onPressed: () => Navigator.pushNamed(
+                context,
+                GridViewPage.routeName,
+              ),
               label: const Text("GridView Example",
+                  style: TextStyle(color: Colors.green)),
+              icon: const Icon(Icons.account_box_rounded),
+              backgroundColor: Colors.black87,
+            ),
+            const SizedBox(height: 20),
+
+            //Flotting action button
+            FloatingActionButton.extended(
+              onPressed: () => Navigator.pushNamed(
+                context,
+                ListViewPage.routeName,
+              ),
+              label: const Text("ListVIewPage",
                   style: TextStyle(color: Colors.green)),
               icon: const Icon(Icons.account_box_rounded),
               backgroundColor: Colors.black87,
@@ -239,8 +248,7 @@ class _HomePageState extends State<HomePage> {
 
             //Sliver appBar
             ElevatedButton(
-                onPressed: () =>
-                    Navigator.pushNamed(
+                onPressed: () => Navigator.pushNamed(
                       context,
                       SliverAppbar.routeName,
                     ),
@@ -252,8 +260,7 @@ class _HomePageState extends State<HomePage> {
 
             //sliderview appBar
             ElevatedButton(
-                onPressed: () =>
-                    Navigator.pushNamed(
+                onPressed: () => Navigator.pushNamed(
                       context,
                       IndicatorPage.routeName,
                     ),
@@ -269,6 +276,12 @@ class _HomePageState extends State<HomePage> {
             InkWell(
               onTap: () {
                 print("RELOAD container or button is pressrd");
+                Fluttertoast.showToast(
+                  msg: "THIS IS CUSTOM TOAST",
+                  backgroundColor: Colors.redAccent,
+                  textColor: Colors.white,
+                  
+                );
               },
               child: Container(
                 height: 300,
@@ -279,7 +292,7 @@ class _HomePageState extends State<HomePage> {
                     border: Border.all(color: Colors.black, width: 10),
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                         fit: BoxFit.contain,
                         image: NetworkImage(
                           'https://cdn0.iconfinder.com/data/icons/glyphpack/41/refresh-512.png',
